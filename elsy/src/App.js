@@ -22,7 +22,7 @@ const stepsMax = 50000;
       steps: 3000,
     }
   } 
-  onHeartChange  = (event) => { 
+  onHeartChange  = (event) => {
     this.setState({heart : event.target.value })
   }
   
@@ -35,8 +35,10 @@ const stepsMax = 50000;
           <p>Steps = {stepsMin} </p>
           <Box style= {{fontSize: 100}}  icon={"local_drink"} color={"#3A85FF"} value={1.5} unit={"L"} /> 
           <Box style= {{fontSize: 100}}  icon={"directions_walk"}  color={"black"}  value={3000} unit={"steps"}/> 
+
           <Box style= {{fontSize: 100}}  icon={"favorite"} color={"red"} value={this.state.heart} unit={"bpm"}  min={heartMin} max={heartMax}  change={this.onHeartChange}  /> 
-          <Box style= {{fontSize: 100}}  icon={"wb_sunny"} color={"yellow"} value={-10} unit={"°C"}/> 
+
+          <Box style= {{fontSize: 100}}  icon={"wb_sunny"} color={"yellow"} value={-10} unit={"°C"} /> 
         </div>
       </div>
     );
