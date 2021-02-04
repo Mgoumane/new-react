@@ -9,10 +9,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
       activeTabs: 'add',
       items: [],
+      productName: '',
+      price: 1,
     }
+
     this.selectAdd = this.selectAdd.bind(this)
     this.selectList = this.selectList.bind(this)
     this.selectPay = this.selectPay.bind(this)
@@ -39,12 +41,21 @@ class App extends React.Component {
 
   }
 
+  renderContent = () => {
+    switch(this.state.activeTabs) {
+      case 'add':
+        return <Add addItem={this.add}></Add>
+      case 'list':
+        return <List listItems={this.state.items}></List>
+      case 'pay':
+        return <Pay></Pay>
+    }
+  }
+  
   render() {
     return (
-      <div>
-        <Add />
-        <List />
-        <Pay />
+      <div className="container div-principal">
+        
 
         <Button 
           onClick={this.selectAdd}
@@ -63,6 +74,8 @@ class App extends React.Component {
           isSelected={this.state.activeTabs === 'pay' ? true : false}>
             Pay
         </Button>
+
+        {this.renderContent()}
 
       </div>
     )

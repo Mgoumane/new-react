@@ -6,6 +6,7 @@ class Button extends React.Component {
                 onClick={this.props.onClick}
                 className={this.props.isSelected === true ? "btn btn-primary" : "btn btn-light"}>
                 {this.props.children}
+                
             </button>
         )
     }
