@@ -11,8 +11,6 @@ class App extends React.Component {
     this.state = {
       activeTabs: 'add',
       items: [],
-      productName: '',
-      price: 1,
     }
 
     this.selectAdd = this.selectAdd.bind(this)
