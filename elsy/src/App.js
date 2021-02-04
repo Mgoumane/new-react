@@ -44,11 +44,12 @@ const stepsMax = 50000;
           <p>Temperature = {tempMin} </p>
           <p>Steps = {stepsMin} </p>
           <Box icon={"local_drink"} color={"#3A85FF"} value={1.5} unit={"L"} /> 
-          <Box icon={"directions_walk"}  color={"black"}  value={3000} unit={"steps"} change={this.onStepChange} min ={0} max={200}/> 
+          
+          <Box icon={"directions_walk"}  color={"black"}  value={this.state.steps} unit={"steps"} change={this.onStepChange} min ={0} max={200}/> 
 
           <Box icon={"favorite"} color={"red"} value={this.state.heart} unit={"bpm"}  min={heartMin} max={heartMax}  change={this.onHeartChange}  /> 
 
-          <Box icon={"wb_sunny"} color={"yellow"} value={-10} unit={"°C"} change={this.onTempChange}/> 
+          <Box icon={"wb_sunny"} color={"yellow"} value={this.state.temperature} unit={"°C"} change={this.onTempChange}/> 
         </div>
       </div>
     );
