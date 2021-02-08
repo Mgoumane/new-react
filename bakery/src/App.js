@@ -16,7 +16,22 @@ class App extends React.Component {
     this.selectAdd = this.selectAdd.bind(this)
     this.selectList = this.selectList.bind(this)
     this.selectPay = this.selectPay.bind(this)
+    this.addItem = this.addItem.bind(this)
   }
+  //Écrivez une méthode addItem qui reçoit les paramètres name et price
+  addItem(name, price) {
+    const obj = {
+      name: name,
+      price: price
+    }
+    const newList = this.state.items
+    newList.push(obj)
+    //Elle ajoute un objet dans l'array du state items avec les clés name : xx et price : xx
+    this.setState({
+      items: newList
+    })
+  }
+
   selectAdd(){
     this.setState({
       activeTabs:'add'
@@ -42,7 +57,7 @@ class App extends React.Component {
   renderContent = () => {
     switch(this.state.activeTabs) {
       case 'add':
-        return <Add addItem={this.add}></Add>
+        return <Add add={this.addItem}></Add>
       case 'list':
         return <List listItems={this.state.items}></List>
       case 'pay':
