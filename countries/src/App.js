@@ -16,7 +16,7 @@ class App extends React.Component {
   }
   componentDidMount() { // Une fois le composant monter je fais du code 
     // Je vais aller fetcher cette Url
-    fetch("https://restcountries.eu/rest/v2/name/france")
+    fetch("https://restcountries.eu/rest/v2/name/france")//La méthode fetch permet de récupérer de la donnée à un endroit précis (souvent une API externe, à laquelle on accèdera grâce à son url) et de la ramener sous le format souhaité pour travailler dessus depuis notre application
       // On utilse les Promess à cause de l'insynchronité
       .then(response => response.json()) // je vais transformer cette réponse en objet JS que je vais pouvoir manipuler
       .then(response => {

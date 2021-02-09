@@ -1,0 +1,126 @@
+ 1- Pourquoi React ? 
+ Je sais que react est framework qui doit donc nous faciliter le travail. Il utilise le principe de singlepage qui nous peermet de naviguer sur le site sans devoir à chaque fois recharger un URL.Il est basé sur du javascript et la dernière mise à jour ES6  
+
+ 
+ 2 - Ecrivez un composant React qui affiche un titre h1 avec marqué "Bonjour" suivi du nom passé en props:
+ inport React from 'react';
+ class App extends React.Components{
+     render(){
+         return(
+             <h1>Bonjour {this.props.name}</h1>
+         )
+     }
+ }
+ export default App;
+
+ 
+ 3- A quoi sert une props ? 
+ Moi je vois une props commme une variable qui va stocker des informations  mais qui peuvent circuler de parents à enfants . On doit utiliser le constructor pour appeler la props
+    - CUSTOMIZER NOS COMPOSANTS 
+    - CYCLE DE VIE L'APPLICATION, NOUS PERMET DE RAFRAICHIR
+
+
+ 4- Quelle méthode peut on utiliser pour afficher une partie de chaque élément d'un tableau ?
+ Onpeut utiliser la méthode Map ou Filter.
+
+ 5- Grace à cette méthode, completer le code suivant pour afficher le Nom et Prénom dans une balise p de chacun des apprenants 
+ import React from 'react';
+    class Promo extends React.Component {
+        apprenants = [
+            {firstName: "John", lastName: "Doe"}, 
+            {firstName: "Jane", lastName: "Roe"}, 
+            {firstName: "Larry", lastName: "Loe"}
+        ];
+        render() {
+            return (
+                <>
+                    {this.apprenants.map((apprenant) => {
+                        return( <p> {apprenant.firstName} {apprenant.lastName} </p>)
+                    })};
+                </>
+            );
+        }
+    }
+    export default Promo;
+
+
+6- Dans quel cas doit on utiliser un state ? Quelles sont les différences avec les props ? 
+On utilise une state si l'on veut stocker des élément que l'on voudrait potentiellement modifier plus-tard. Les différences avec les props c'est que le state est dans le composant en soi alors que la props peut être envoyé dans les autres composants.
+STATE DES INFORMARTIONS SUR NOTRE COMPOSANTS QUI MET A JOUR NOTRE COMPOSANTS
+
+7- Comment peut on passer une information d'un parent à son enfant ? et d'un enfant à son parent ?
+On utilise les props pour passer d'un parent à un enfant
+On utilise le Bubbling pour passer d'un enfant vers un parent 
+
+8- Sur quel élément HTML peux on récuperer l'evenement onClick ?
+Sur tous le éléments
+
+9- Completez le code suivant pour recuperer dans le state name, la valeur rentrer par l'utilsateur dans l'input
+    import React from 'react';
+    class Form extends React.Component {
+        constructor(props) {
+                super(props);
+                this.state={
+                    name:'',
+                }
+                this.onChange= this.onChange.bind(this)
+        }
+        onChange(event) {
+                this.setState({name:event.target.value});
+        }
+        render() {
+            return (
+                <input value={this.state.name} onChange={this.onChange} />
+            );
+        }
+    }
+    export default Form;
+
+
+10- A quoi sert une fonction de callback asynchrone ?
+Elle sert executer la fonction après que avoir chercher l'info sur l'URL
+
+
+11- Quelle est la différence entre une fonction de callback et une promesse ?
+Il n'y a pas de dufférence
+
+12- Expliquez du mieux possible le cycle de vie d'un composant React.
+..................................................
+
+13- Completez le code suivant qui va chercher le pokemon suivant: https://pokeapi.co/api/v2/pokemon/17 et qui affiche son nom
+import React from 'react';
+class Pokemon extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: ""
+		}
+	}
+    ComponentDidMount(){
+        fetch("https://pokeapi.co/api/v2/pokemon/17"); 
+        .then(response) => {return response.json(); }
+        .then ((response) => {
+            this.setState({
+                name: response.name
+            })
+        })
+    }
+	render() {
+		return (
+			<p>My pokemon is: {this.state.name}</p>
+		);
+	}
+}
+export default Pokemon;
+
+
+14- Comment mettre à jour le code ci dessus pour gerer une possible erreur lors de la récupération des infos du pokémon ?
+..................................................................
+
+
+15- A quoi sert un Router ? 
+Le rooter va servir à changer de page sans devoir une nouvelle page .
+
+
+16- Quels sont les 4 principaux composants d'un Router et à quoi servent ils ? 
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
