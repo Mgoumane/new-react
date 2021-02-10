@@ -1,9 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import HomePage from "./components/homePage"
 import DetailFilm from "./components/detailFilm"
 import './App.css';
-
 
 const movies = [
   {
@@ -88,7 +86,7 @@ const movies = [
   }
 ];
 
-const premierFilm= movies[0].toS;
+
 
 
 class Catalog extends React.Component {
@@ -96,19 +94,19 @@ class Catalog extends React.Component {
 
     return (
       <BrowserRouter>
-        <Switch> {/* Ce composant ne s'affichera pas à l'écran, il liste les chemins possibles */}
-          <Route exact path="/homepage" >
-            <HomePage movies={movies}></HomePage>
-          </Route> {/* Chaque route est un composant <Route> */}
+     <div>
+       {movies.map((movie)=> {
+         return <Link to={`/film/${movie.id}`}>{movie.title}</Link>
+       })}
+     </div>
+     <Switch>
+       <Route  path="/film/:id" render = {(props) =>{
+         return <DetailFilm {...props} movies={movies}></DetailFilm>
+       }}>
 
-
-          <Route exact path="/detailFilm/:id"
-          render={(props) => <DetailFilm {...props} addItem={this.add}></DetailFilm>}
-          component={DetailFilm} >
-            <DetailFilm movies={movies}></DetailFilm>
-          </Route>
-        </Switch>
-      </BrowserRouter>
+       </Route>
+     </Switch>
+     </BrowserRouter>
     )
   }
 }
