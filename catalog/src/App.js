@@ -98,7 +98,10 @@ class Catalog extends React.Component {
        {movies.map((movie)=> {
          return <Link to={`/film/${movie.id}`}>{movie.title}</Link>
        })}
-     </div>
+     </div>                                                                                                                                                                                                                                                                                                       
+
+
+
      <Switch>
        <Route  path="/film/:id" render = {(props) =>{
          return <DetailFilm {...props} movies={movies}></DetailFilm>
